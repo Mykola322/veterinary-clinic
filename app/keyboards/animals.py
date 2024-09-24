@@ -1,7 +1,7 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
-def anim_keyboard_builder(animals: list):
+def anims_keyboard_builder(animals: list):
     builder = InlineKeyboardBuilder()
 
     for animal in animals:
