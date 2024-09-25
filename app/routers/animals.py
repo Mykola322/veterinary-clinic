@@ -12,14 +12,14 @@ anims_router = Router()
 async def show_animals(message: Message, state: FSMContext):
     animals = files_actions.open_file()
     keyboard = anims_keyboard_builder(animals)
-    await message.answer(
+    message.answer(
         text="Виберіть тварину",
         reply_markup=keyboard
     )
 
 @anims_router.callback_query(F.data.startswith("anim_"))
 async def animal_actions(callback: CallbackQuery, state: FSMContext):
-    animal = callback.message.data.split("_")[-1]
+    animal = callback.data.split("_")[-1]
     keyboard = anim_actions_keyboards(animal)
     await callback.message.answer(
         text=animal,
