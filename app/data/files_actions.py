@@ -37,3 +37,14 @@ def curve_animal(animal, path: str = list_files.CURVE_ANIMALS)-> str:
     return f"Тварину '{animal}' було успішно вилікувано!"
 
 
+def add_animal(animal, path: str = list_files.ANIMALS) -> str:
+    animals = open_file()
+
+    if animal not in animals:
+        animals.append(animal)
+        save_file(animals)
+        msg = f"Тварину '{animal}' було успішно додано!"
+    else:
+        msg = f"Тварина '{animal}' уже є у списку."
+
+    return msg

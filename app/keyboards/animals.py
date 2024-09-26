@@ -15,3 +15,4 @@ def anim_actions_keyboards(animal: str):
     builder.button(text="Вилікувати тварину", callback_data=f"curve_anim_{animal}")
     builder.button(text="Видалити тварину",callback_data=f"del_anim_{animal}")
     return builder.as_markup()
+
