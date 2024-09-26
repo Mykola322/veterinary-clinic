@@ -25,3 +25,22 @@ async def animal_actions(callback: CallbackQuery, state: FSMContext):
         text=animal,
         reply_markup=keyboard
         )
+
+@anims_router.callback_query(F.data.startswith("curve_anim_"))
+async def curve_animal(callback: CallbackQuery, state: FSMContext):
+    animal = callback.data.split("_")[-1]
+    msg = files_actions.curve_animal(animal)
+    await callback.message.answer(
+        text=msg,
+        reply_markup=ReplyKeyboardRemove()
+    )
+
+
+@anims_router.callback_query(F.data.startswith("del_anim_"))
+async def del_animal(callback: CallbackQuery, state: FSMContext):
+    animal = callback.data.split("_")[-1]
+    msg = files_actions.del_animal(animal)
+    await callback.message.answer(
+        text=msg,
+        reply_markup=ReplyKeyboardRemove()
+    )

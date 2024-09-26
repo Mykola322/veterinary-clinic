@@ -20,10 +20,20 @@ def save_file(file: list, path: str = list_files.ANIMALS):
         json.dump(file, fh, indent=4, ensure_ascii=False)
 
 
-def curve_animal(animal, path: str = list_files.ANIMALS):
+def del_animal(animal, path: str = list_files):
     animals = open_file()
     animals.remove(animal)
-    save_file()
-    curve_animals = open_file(list_files.CURVE_ANIMALS)
+    save_file(animals)
+    return f"Тварину '{animal}' було успішно видалено!"
+
+
+def curve_animal(animal, path: str = list_files.CURVE_ANIMALS)-> str:
+    del_animal(animal)
+
+    curve_animals = open_file(path)
     curve_animals.append(animal)
-    save_file(list_files.CURVE_ANIMALS)
+    save_file(curve_animals, path)
+
+    return f"Тварину '{animal}' було успішно вилікувано!"
+
+
