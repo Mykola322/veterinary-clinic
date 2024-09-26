@@ -60,6 +60,6 @@ async def show_curved_anims(message: Message, state: FSMContext):
 
     msg = ""
     for anim in enumerate(curve_animals, start=1):
-        msg += f"{i}. {anim}"
+        msg += f"{i}. {anim}\n"
 
     await message.answer(text=msg)
