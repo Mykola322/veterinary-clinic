@@ -15,10 +15,10 @@ async def show_reviews(message: Message, state: FSMContext):
     reviews = files_actions.open_file(list_files.REVIEWS)
 
     msg = ""
-    for review in enumerate(reviews, start=1):
+    for i, review in enumerate(reviews, start=1):
         msg += f"{i}. {review}\n"
 
-    await message.answer(text=msg)
+    await message.answer(text=msg or "Відгуків поки немає")
 
 @review_router.message(F.text =="Додати новий відгук")
 async def add_review(message: Message, state: FSMContext):
